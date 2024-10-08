@@ -4,8 +4,13 @@
  */
 package pruebas_tecnicas;
 
-import Prueba_tecnica1.Prueba_Tecnica1;
+
+import Prueba_tecnica2.Ticket;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
+
 
 /**
  *
@@ -18,39 +23,48 @@ public class Pruebas_Tecnicas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Prueba_Tecnica1 Pru = new Prueba_Tecnica1();
-        Pru.LLenarMatriz();
-        
-        System.out.println("-----------BIENVENIDO----------------------------");
-        boolean bandera = false;
-        Scanner teclado = new Scanner(System.in);
-        int fila,colu;
-        String respuesta;
-        
-        while (bandera!=true) {            
+            List<Ticket> ListaTickets = new ArrayList();
             
-            System.out.println("Para salir presione s o para mostrar m");
-            respuesta = teclado.next();
-            if(respuesta.equalsIgnoreCase("s")){
-                bandera = true;
+            Ticket tick = new Ticket(12, 2, 3, 1500, new Date(), new Date());
+            Ticket tick2 = new Ticket(13, 3, 4, 1500,new Date(), new Date());
+            
+            Ticket tick3 = new Ticket();
+            
+            tick3.setNumero(20);
+            tick3.setFila(3);
+            tick3.setAsiento(1);
+            tick3.setPrecio(2300);
+            tick3.setFechaCompra(new Date());
+            tick3.setFechaValides(new Date());
+            
+            ListaTickets.add(tick);
+            ListaTickets.add(tick2);
+            ListaTickets.add(tick3);
+            
+            
+//            Suma de Precios
+            double suma = 0;
+            for(Ticket ticket : ListaTickets){
+                suma = suma + ticket.getPrecio();
             }
-            if(respuesta.equalsIgnoreCase("m")){
-                Pru.MostrarMatriz();
+            System.out.println("la suma de los tickets es: Q"+ String.format("%.2f", suma));
+            
+            Scanner teclado = new Scanner(System.in);
+            
+            System.out.println("ingrese la fila de la que desea ver tickets: ");
+            int fila = teclado.nextInt();
+            boolean bandera = false;
+            
+            for(Ticket ticket : ListaTickets){
+                if (ticket.getFila()==fila) {
+                    System.out.println(ticket.toString());
+                    bandera = true;
+                }
             }
             
-            
-            System.out.println("");
-            System.out.println("Ingrese la fila a ocupar");
-            System.out.println("");
-            fila = teclado.nextInt();
-            System.out.println("Ingrese la asiento a ocupar");
-            colu = teclado.nextInt();
-            Pru.Ingreso_de_entrada(fila,colu);
-            
-            
-            
+            if (bandera == false) {
+                System.out.println("NO Se encontraron datos");
         }
-        
     }
     
 }

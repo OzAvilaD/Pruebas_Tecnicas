@@ -37,6 +37,9 @@ public class Prueba_Tecnica1 {
     
 }
    
+//import java.util.Scanner;
+//import Prueba_tecnica1.Prueba_Tecnica1;
+
 /*IMPLEMENTACION EN CLASE MAIN 
     Prueba_Tecnica1 Pru = new Prueba_Tecnica1();
         Pru.LLenarMatriz();
